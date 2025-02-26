@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteBase /
+
+# Redirect root to /film
+RewriteRule ^$ /film [R=301,L]
+
+# Route for film listing
+RewriteRule ^film/?$ index.php?page=film [L,QSA]
+
+# Route for watching a specific film
+RewriteRule ^watch/([^/]+)/?$ index.php?page=watch&title=$1 [L,QSA]
+
+# Handle 404 errors
+ErrorDocument 404 /index.php?page=404
